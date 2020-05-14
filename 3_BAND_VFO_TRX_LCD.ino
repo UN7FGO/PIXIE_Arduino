@@ -181,7 +181,6 @@ void loop() {
        }
      }
      encoder.setPosition(0);
-     delay(20);
   }
 }
 
