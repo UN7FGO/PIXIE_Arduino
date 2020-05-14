@@ -12,7 +12,8 @@
 // Подключаем библиотеку для нашего LCD дистплея, подключенного по I2C протоколу
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
-  
+#include <RotaryEncoder.h>          // библиотека для энкодера
+
 
 // Инициализируем дисплей 4х16, подключенный по I2C
 LiquidCrystal_I2C lcd(0x27,24,4); 
@@ -28,6 +29,8 @@ LiquidCrystal_I2C lcd(0x27,24,4);
 #define ENC_CLK_PIN 11
 #define ENC_DT_PIN  10
 #define ENC_SW_PIN  9
+
+RotaryEncoder encoder(ENC_DT_PIN, ENC_CLK_PIN);   
 
 // Определяем контакт, к которому подключен делитель входного напряжения 1:3
 #define VOLT_PIN A1
@@ -66,6 +69,7 @@ int aVal;
 int Band;
 int nfreq;
 int dfreq;
+int Pos;
 /* =================================================== */
 void setup() {
   lcd.begin();                     
@@ -76,6 +80,8 @@ void setup() {
   pinMode (ENC_DT_PIN,INPUT);
   pinMode (ENC_SW_PIN,INPUT);
   pinALast = digitalRead(ENC_CLK_PIN);   
+
+  encoder.setPosition(0);
 
   // "старая" частота "по умолчанию"
   old_freq = 0;
@@ -154,11 +160,12 @@ void loop() {
   }
 
   // обрабатываем энкодер
-  aVal = digitalRead(ENC_CLK_PIN);
+  encoder.tick();
+  Pos = encoder.getPosition();
   // проверяем, был ли произведен поворот ручки энкодера
-  if (aVal != pinALast){ 
+  if (Pos != 0){ 
     // определяем направление вращения энкодера
-    if (digitalRead(ENC_DT_PIN) == aVal) {
+    if (Pos < 0) {
        // повернули энкодер "по часовой стрелке" (CW)
        current_freq += dfreq;
        // не даем частоте уйти за верхний предел диапазона
@@ -173,10 +180,9 @@ void loop() {
          current_freq = min_freq[Band];
        }
      }
-     Refresh_LCD();      
-     delay(50);
+     encoder.setPosition(0);
+     delay(20);
   }
-  pinALast = aVal;
 }
 
 // Передаем байт побитно, начиная с младшего бита, в AD9850, по последовательному интерфейсу 
@@ -204,14 +210,24 @@ void sendFrequency(double frequency) {
 
 void Refresh_LCD()
 {
-  String S;
+  String S, Ss;
   lcd.clear();
   S = "Band: " + name_band[Band];
   lcd.setCursor(0, 0);
   lcd.print(S);
   lcd.setCursor(0, 1);
-  lcd.print("Freq: ");
-  lcd.print(current_freq);
+  S = "Freq: " + String(current_freq/1000000);
+  Ss = String(current_freq/1000 - int(current_freq/1000000)*1000);
+  while (Ss.length() < 3) {
+    Ss = "0" + Ss;
+  }
+  S = S + "." + Ss;
+  Ss = String(current_freq % 1000);
+  while (Ss.length() < 3) {
+    Ss = "0" + Ss;
+  }
+  S = S + "." + Ss;
+  lcd.print(S);
   lcd.setCursor(0, 2);
   lcd.print("Step: ");
   lcd.print(dfreq);
@@ -221,4 +237,3 @@ void Refresh_LCD()
   lcd.print(" V");
   
 }
-
