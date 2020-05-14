@@ -72,8 +72,6 @@ int dfreq;
 int Pos;
 /* =================================================== */
 void setup() {
-  lcd.begin();                     
-  lcd.backlight();// Включаем подсветку дисплея
   
   // все связанное с энкодером
   pinMode (ENC_CLK_PIN,INPUT);
@@ -93,15 +91,21 @@ void setup() {
   nfreq = 2;
   // Текущий шаг изменения частоты
   dfreq = d_freq[nfreq];
+
+  lcd.begin();                     
+  lcd.backlight();// Включаем подсветку дисплея
+  lcd.clear();
+  Refresh_LCD();
+
 }
 
 void loop() {
   // Если частота у нас изменилась, 
   // то обновляем ее значение на индикаторе и на синтезаторе
   if ( current_freq != old_freq ) {
-    Refresh_LCD();
     sendFrequency(current_freq);
     old_freq = current_freq;
+    Refresh_LCD();
   }
 
   // если наш трансивер перешел в режим передачи
@@ -155,7 +159,7 @@ void loop() {
       // запоминаем выбранный шаг перестройки
       dfreq = d_freq[nfreq];
       // выводим на индикатор информацию о выбранном шаге перестройки
-      Refresh_LCD();      
+      Refresh_LCD();
     }
   }
 
@@ -210,10 +214,10 @@ void sendFrequency(double frequency) {
 void Refresh_LCD()
 {
   String S, Ss;
-  lcd.clear();
-  S = "Band: " + name_band[Band];
+  S = "Band: " + name_band[Band] + "  ";
   lcd.setCursor(0, 0);
   lcd.print(S);
+  
   lcd.setCursor(0, 1);
   S = "Freq: " + String(current_freq/1000000);
   Ss = String(current_freq/1000 - int(current_freq/1000000)*1000);
@@ -225,14 +229,16 @@ void Refresh_LCD()
   while (Ss.length() < 3) {
     Ss = "0" + Ss;
   }
-  S = S + "." + Ss;
+  S = S + "." + Ss + " ";
   lcd.print(S);
+  
   lcd.setCursor(0, 2);
   lcd.print("Step: ");
   lcd.print(dfreq);
+  lcd.print("    ");
+  
   lcd.setCursor(0, 3);
   lcd.print("VCC ");
   lcd.print(float(int(analogRead(VOLT_PIN)*150/1023)/10) );
-  lcd.print(" V");
-  
+  lcd.print(" V  ");
 }
