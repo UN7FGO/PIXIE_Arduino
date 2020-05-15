@@ -15,6 +15,7 @@ Versions of program:
 	- 3 band - 160-80-40 meter (switched by pressing the encoder button);
 	- fixed frequency tuning step 100 Hz;
 	- the indicator displays only the frequency in kHz
+	https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3_BAND_RX_Photo_2.jpg
 
 2. 3_BAND_VFO_TRX.ino - for transceiver - Arduino Nano + AD9850 + Rotate encoder + TM1637 7 segment 8 digit
 	- 3 band - 160-80-40 meter (switches by long pressing of the encoder button);
