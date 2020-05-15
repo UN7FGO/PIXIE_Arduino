@@ -1,4 +1,4 @@
-// http://un7fgo.gengen.ru (C) 2019
+// http://un7fgo.gengen.ru (C) 2020
 // https://github.com/UN7FGO 
 // 
 // Basic, 3-band frequency synthesizer for PIXIE transceiver.
@@ -76,8 +76,7 @@ void setup() {
   // все связанное с энкодером
   pinMode (ENC_CLK_PIN,INPUT);
   pinMode (ENC_DT_PIN,INPUT);
-  pinMode (ENC_SW_PIN,INPUT);
-  pinALast = digitalRead(ENC_CLK_PIN);   
+  pinMode (ENC_SW_PIN,INPUT_PULLUP);
 
   encoder.setPosition(0);
 
