@@ -16,7 +16,7 @@
 
 
 // Инициализируем дисплей 4х16, подключенный по I2C
-LiquidCrystal_I2C lcd(0x27,24,4); 
+LiquidCrystal_I2C lcd(0x27,20,4); 
 
 // Описываем подключение модуля AD9850
 #define W_CLK 8
