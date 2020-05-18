@@ -69,6 +69,15 @@ void setup() {
   // очищаем индикатор
   lc.clearDisplay(0);
 
+ // configure arduino data pins for output
+  pinMode(FQ_UD, OUTPUT);
+  pinMode(W_CLK, OUTPUT);
+  pinMode(DATA, OUTPUT);
+  pinMode(RESET, OUTPUT);
+   
+  pulseHigh(RESET);   pulseHigh(W_CLK);   pulseHigh(FQ_UD);  // this pulse enables serial mode - Datasheet page 12 figure 10
+
+  
   // все связанное с энкодером
   pinMode (ENC_CLK_PIN,INPUT);
   pinMode (ENC_DT_PIN,INPUT);
