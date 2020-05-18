@@ -38,6 +38,15 @@ int Band;
 
 /* =================================================== */
 void setup() {
+
+// configure arduino data pins for output
+  pinMode(FQ_UD, OUTPUT);
+  pinMode(W_CLK, OUTPUT);
+  pinMode(DATA, OUTPUT);
+  pinMode(RESET, OUTPUT);
+   
+  pulseHigh(RESET);   pulseHigh(W_CLK);   pulseHigh(FQ_UD);  // this pulse enables serial mode - Datasheet page 12 figure 10
+  
   // устанавливаем яркость дисплея
   display.setBrightness(1);
   // все связанное с энкодером
