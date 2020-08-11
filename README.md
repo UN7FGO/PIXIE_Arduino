@@ -29,6 +29,7 @@ Versions of program:
 	- variable frequency tuning step 1-10-100-1000-10000 Hz (switched by a short press of the encoder button);
 	- The screen displays - band name, frequency, frequency tuning step, transceiver supply voltage;
 	- External libraries are used to process the encoder and synthesizer AD9850.
+	- https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3DAND_VFO_LCD.jpg
 
 4. 3_BAND_VFO_TRX_OLED.ino - **for transceiver** - PIXIE + Arduino UNO + AD9850 + Rotary encoder + I2C OLED display 128x64 pixels
 	- Same as **3_BAND_VFO_TRX_LCD** - https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3DAND_VFO_OLED.jpg
@@ -96,6 +97,8 @@ https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3_BAND_TRX_Photo_1.jpg
 - синтезатор AD9850 
 - Энкодер
 - LCD дисплей 4 строки по 20 символов, подключенный по интерфейсу I2C
+- https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3DAND_VFO_LCD.jpg
+
 	
 ***Возможности:***
 - 3 диапазона - 160-80-40 метров (переключаются долгим нажатием на кнопку энкодера);
