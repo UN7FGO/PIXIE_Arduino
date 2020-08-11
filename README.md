@@ -31,7 +31,7 @@ Versions of program:
 	- External libraries are used to process the encoder and synthesizer AD9850.
 
 4. 3_BAND_VFO_TRX_OLED.ino - **for transceiver** - PIXIE + Arduino UNO + AD9850 + Rotary encoder + I2C OLED display 128x64 pixels
-	Same as **3_BAND_VFO_TRX_LCD**
+	- Same as **3_BAND_VFO_TRX_LCD**
 
 
 Suggestions and criticism are welcome.
