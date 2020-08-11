@@ -30,6 +30,9 @@ Versions of program:
 	- The screen displays - band name, frequency, frequency tuning step, transceiver supply voltage;
 	- External libraries are used to process the encoder and synthesizer AD9850.
 
+4. 3_BAND_VFO_TRX_OLED.ino - **for transceiver** - PIXIE + Arduino UNO + AD9850 + Rotary encoder + I2C OLED display 128x64 pixels
+	Same as **3_BAND_VFO_TRX_LCD**
+
 
 Suggestions and criticism are welcome.
 
@@ -99,6 +102,18 @@ https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3_BAND_TRX_Photo_1.jpg
 - изменяемый шаг перстройки частоты 10-100-1000-10000 Гц (переключаются коротким нажатием на кнопку энкодера);
 - На дисплее отображается: наименование диапазона, текущая частота, текущий шаг перестройки, напряжение питания трансивера;
 - использованы внешние библиотеки для обработки энкодера и синтезатора AD9850.
+
+4. 3_BAND_VFO_TRX_LCD.ino - **для трансивера**
+
+***Используемые модули:***
+- трансивер PIXIE 
+- Arduino Nano 
+- синтезатор AD9850 
+- Энкодер
+- OLED дисплей 128х64 точки с интерфейсом I2C
+	
+***Возможности:***
+Такие же как и у 3_BAND_VFO_TRX_LCD
 
 ГПД может быть переделан под любые другие диапазоны, все параметры доступны в исходном тексте программы.
 
