@@ -78,7 +78,6 @@ int Pos;
 /* =================================================== */
 void setup() {
 
-
   Serial.begin(9600);
   // все связанное с энкодером
   pinMode (ENC_CLK_PIN,INPUT_PULLUP);
@@ -104,13 +103,10 @@ void setup() {
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { // Address 0x3D for 128x64
     Serial.println(F("SSD1306 allocation failed"));
   }
-  Serial.println ("Setup");
   Refresh_Display();
 }
 
 void loop() {
-  Serial.println (millis());
-
   
   // Если частота у нас изменилась, 
   // то обновляем ее значение на индикаторе и на синтезаторе
