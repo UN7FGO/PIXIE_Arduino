@@ -31,7 +31,7 @@ Versions of program:
 	- External libraries are used to process the encoder and synthesizer AD9850.
 
 4. 3_BAND_VFO_TRX_OLED.ino - **for transceiver** - PIXIE + Arduino UNO + AD9850 + Rotary encoder + I2C OLED display 128x64 pixels
-	- Same as **3_BAND_VFO_TRX_LCD**
+	- Same as **3_BAND_VFO_TRX_LCD** - https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3DAND_VFO_OLED.jpg
 
 
 Suggestions and criticism are welcome.
@@ -113,7 +113,7 @@ https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3_BAND_TRX_Photo_1.jpg
 - OLED дисплей 128х64 точки с интерфейсом I2C
 	
 ***Возможности:***
-Такие же как и у 3_BAND_VFO_TRX_LCD
+Такие же как и у 3_BAND_VFO_TRX_LCD - https://github.com/UN7FGO/PIXIE_Arduino/blob/master/PIXIE_3DAND_VFO_OLED.jpg
 
 ГПД может быть переделан под любые другие диапазоны, все параметры доступны в исходном тексте программы.
 
